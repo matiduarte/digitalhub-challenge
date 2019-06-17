@@ -1,17 +1,18 @@
 <template>
   <div class="container">
+    <nuxt-child :key="$route.fullPath"></nuxt-child>
   </div>
 </template>
 
 <script>
 
+
 export default {
   name: 'home-page',
   async asyncData({ store }) {
-    return Promise.all([
-      store.dispatch('getCategories'),
-      store.dispatch('getNews'),
-    ]);
+    store.dispatch('getCategories');
+  },
+  computed: {
   },
 };
 </script>
@@ -47,4 +48,8 @@ export default {
 .links {
   padding-top: 15px;
 }
+</style>
+
+<style scopded>
+
 </style>

@@ -1,17 +1,31 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
-    <nuxt />
+    <transition name="slide">
+      <div>
+        <nav-bar :categories="getCategories"></nav-bar>
+        <nuxt />
+        <Footer/>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 
 import NavBar from '@/components/NavBar.vue';
+import Footer from '@/components/Footer.vue';
+import { mapState } from 'vuex';
 
 export default {
   components: {
     NavBar,
+    Footer,
+  },
+  computed: {
+    ...mapState(['categories']),
+    getCategories() {
+      return this.categories;
+    },
   },
 };
 </script>

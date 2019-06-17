@@ -16,11 +16,15 @@ export const mutations = {
 };
 
 export const actions = {
-  async getNews({ commit }) {
+  async getNews({ commit }, category) {
     try {
-      const { data: { articles } } = await request('GET', 'top-headlines?country=us');
+      const categoryParam = (category) ? `&category=${category}` : '';
+      const { data: { articles } } = await request('GET', `top-headlines?country=us${categoryParam}`);
       const news = articles.map(article => ({
-        ...article,
+        author: article.author,
+        title: article.title,
+        image: article.urlToImage,
+        url: article.url,
       }));
       commit('setNews', news);
     } catch (error) {
