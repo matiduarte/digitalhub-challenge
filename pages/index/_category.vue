@@ -1,22 +1,25 @@
 <template>
   <div class="container">
-    <card></card>
+    <card :news="news"></card>
   </div>
 </template>
 
 <script>
 
 import Card from '@/components/Card.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'category',
   async asyncData({ store, params }) {
     const { category } = params;
-    store.dispatch('setLoading', true);
-    store.dispatch('getNews', category);
+    return store.dispatch('getNews', category);
   },
   components: {
     Card,
+  },
+  computed: {
+    ...mapState(['news']),
   },
 };
 </script>

@@ -1,10 +1,12 @@
 <template>
   <div class="columns is-multiline">
-    <div class="column is-one-third" v-for="(headline, index) in getNews" :key="index">
+    <div class="column is-one-third" v-for="(headline, index) in news" :key="index">
    <div class="card">
     <div class="card-image">
       <figure class="image is-3by2">
-        <img v-lazy="headline.image" :alt="headline.title" lazy="loading">
+        <div v-lazy-container="{ selector: 'img', error: errorImg }">
+          <img :data-src="headline.image" :data-error="errorImg" :alt="headline.title">
+        </div>
       </figure>
     </div>
     <div class="card-content">
@@ -22,18 +24,18 @@
 
 <script>
 
-import { mapState, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Card',
+  props: ['news'],
+  data() {
+    return {
+      errorImg: '/img/no_available.jpg',
+    };
+  },
   methods: {
     ...mapActions(['setLoading']),
-  },
-  computed: {
-    ...mapState(['news']),
-    getNews() {
-      return this.news;
-    },
   },
 };
 </script>
