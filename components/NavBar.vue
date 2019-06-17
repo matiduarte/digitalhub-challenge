@@ -14,7 +14,10 @@
       </div>
       <div class="navbar-menu" :class="{'is-active': toggleMenu}">
         <div class="navbar-start">
-          <nuxt-link class="navbar-item" to="/">Home</nuxt-link>
+          <nuxt-link
+            class="navbar-item" to="/"
+            @click.native="toggleMenu = false"
+          >Home</nuxt-link>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               Categories
@@ -23,6 +26,7 @@
               <nuxt-link v-for="category in categories"
                  class="navbar-item"
                  :key="category"
+                 @click.native="toggleMenu = false"
                  :to="{ path: category }"
               >
                 {{getCategoryName(category)}}

@@ -12,6 +12,7 @@ export default {
   name: 'category',
   async asyncData({ store, params }) {
     const { category } = params;
+    store.dispatch('setLoading', true);
     store.dispatch('getNews', category);
   },
   components: {

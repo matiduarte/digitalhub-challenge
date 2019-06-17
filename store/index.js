@@ -4,6 +4,7 @@ import request from '../libs/ajax';
 export const state = () => ({
   news: [],
   categories: [],
+  loadingData: true,
 });
 
 export const mutations = {
@@ -12,6 +13,9 @@ export const mutations = {
   },
   setCategories(localState, data) {
     Vue.set(localState, 'categories', data);
+  },
+  setLoading(localState, data) {
+    Vue.set(localState, 'loadingData', data);
   },
 };
 
@@ -39,5 +43,8 @@ export const actions = {
     } catch (error) {
       console.error(error);
     }
+  },
+  setLoading({ commit }, data) {
+    commit('setLoading', data);
   },
 };

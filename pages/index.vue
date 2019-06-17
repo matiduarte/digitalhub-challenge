@@ -6,18 +6,20 @@
 
 <script>
 
-
 export default {
   name: 'home-page',
   async asyncData({ store }) {
     store.dispatch('getCategories');
   },
-  computed: {
-  },
 };
 </script>
 
 <style>
+  .loadingblur {
+    filter: blur(2px);
+    opacity: 0.8;
+  }
+
 .container {
   margin: 0 auto;
   min-height: 100vh;

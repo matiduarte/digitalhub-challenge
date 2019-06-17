@@ -4,7 +4,7 @@
    <div class="card">
     <div class="card-image">
       <figure class="image is-3by2">
-        <img :src="headline.image" :alt="headline.title">
+        <img v-lazy="headline.image" :alt="headline.title" lazy="loading">
       </figure>
     </div>
     <div class="card-content">
@@ -22,10 +22,13 @@
 
 <script>
 
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'Card',
+  methods: {
+    ...mapActions(['setLoading']),
+  },
   computed: {
     ...mapState(['news']),
     getNews() {
@@ -52,10 +55,13 @@ export default {
     width: 31.3333%;
   }
   .media-content {
-    padding: 10px;
+    padding: 10px 5px 10px 5px;
+  }
+  img[lazy=loading] {
+    filter: blur(2px);
+    opacity: 0.8;
   }
   @media only screen and (max-width: 600px) {
-
     .columns > .column.is-one-third {
       width: auto;
       justify-content: center;
