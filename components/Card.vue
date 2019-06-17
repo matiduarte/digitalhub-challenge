@@ -68,6 +68,9 @@ export default {
       width: auto;
       justify-content: center;
       align-items: center;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-bottom: 2px;
     }
   }
 

@@ -29,6 +29,7 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/vue-lazyload', ssr: false },
+    { src: '~/plugins/sw.js', ssr: false },
   ],
   /*
   ** Nuxt.js modules
@@ -39,6 +40,26 @@ module.exports = {
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
   ],
+  manifest: {
+    crossorigin: 'use-credentials',
+  },
+  workbox: {
+    importScripts: [
+      'custom-sw.js',
+    ],
+    runtimeCaching: [
+      {
+        urlPattern: 'https://my-cdn.com/posts/.*',
+        strategyOptions: {
+          cacheName: 'our-cache',
+          cacheExpiration: {
+            maxEntries: 10,
+            maxAgeSeconds: 300,
+          },
+        },
+      },
+    ],
+  },
   /*
   ** Build configuration
   */
