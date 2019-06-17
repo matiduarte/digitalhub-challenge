@@ -2,9 +2,9 @@
   <div>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="hover-link navbar-item" href="http://www.chalhoubgroup.com/">
+        <h1 class="navbar-item">
           DigitalHub
-        </a>
+        </h1>
         <a role="button" ref="navbar-burguer" class="navbar-burger burger" :class="{'is-active': toggleMenu}"
            @click="toggleMenu = !toggleMenu" aria-label="menu" aria-expanded="false">
           <span aria-hidden="true"></span>
@@ -26,7 +26,8 @@
               <nuxt-link v-for="category in categories"
                  class="navbar-item"
                  :key="category"
-                 :to="{ path: category }"
+                  @click.native="toggleMenu = false"
+                  :to="{ path: category }"
               >
                 {{getCategoryName(category)}}
               </nuxt-link>
@@ -58,6 +59,10 @@ export default {
 </script>
 
 <style scoped>
+  .nuxt-link-active {
+    background-color: #3f51b5 !important;
+    color: white !important;
+  }
   .hover-link:hover {
     background-color: #33418e !important;
     color: white !important;
@@ -75,9 +80,6 @@ export default {
   }
   .navbar-item {
     color: #fff;
-  }
-  .navbar-item > a:hover {
-    color: red;
   }
   .navbar-dropdown {
     background: #3f51b5;

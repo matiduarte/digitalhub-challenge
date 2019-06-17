@@ -39,23 +39,37 @@ module.exports = {
     '@nuxtjs/bulma',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
+    '@nuxtjs/eslint-module',
   ],
   manifest: {
     crossorigin: 'use-credentials',
   },
   workbox: {
+    cachingExtensions: 'http://localhost:3000/',
     importScripts: [
       'custom-sw.js',
     ],
+    ignoreUrlParametersMatching: [/./],
+    skipWaiting: true,
     runtimeCaching: [
       {
-        urlPattern: 'https://my-cdn.com/posts/.*',
+        // To match cross-origin requests, use a RegExp that matches
+        // the start of the origin:
+        urlPattern: new RegExp('^http://localhost:3000/.*'),
+        handler: 'cacheFirst',
         strategyOptions: {
-          cacheName: 'our-cache',
-          cacheExpiration: {
-            maxEntries: 10,
-            maxAgeSeconds: 300,
+          cacheableResponse: {
+            statuses: [0, 200],
           },
+        },
+      },
+      {
+        urlPattern: new RegExp('^http://localhost:3000/img/.*'),
+        handler: 'cacheFirst',
+        method: 'GET',
+        strategyOptions: {
+          cacheName: 'images',
+          cacheableResponse: { statuses: [0, 200, 304] },
         },
       },
     ],

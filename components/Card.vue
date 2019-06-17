@@ -12,8 +12,8 @@
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <p class="title is-6"><a :href="headline.url" target="_blank">{{headline.title}}</a></p>
-          <p class="subtitle is-7">{{headline.author}}</p>
+          <div class="title is-6"><a :href="headline.url" target="_blank">{{headline.title}}</a></div>
+          <div class="subtitle is-7" style="font-weight: 500">{{headline.author}}</div>
         </div>
       </div>
     </div>
@@ -41,6 +41,14 @@ export default {
 </script>
 
 <style scoped>
+  .title > a{
+    color: #3f51b5;
+    font-weight: 500;
+  }
+  .title > a:hover{
+    color: #24327d;
+    font-weight: 500;
+  }
   .card {
     border-radius: 5px;
   }
