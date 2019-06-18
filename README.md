@@ -34,3 +34,6 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
+## Important
+
+For test workbox and see cached files it is recommended to use production mode npm run build / npm run start
