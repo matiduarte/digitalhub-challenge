@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This is a PWA single page application developed with Vue.Js and Nuxt. This application is configured with Airbnb's ESLint rules.
+This is a PWA Single Page Application developed with Vue.Js, Nuxt.js and the free, open source CSS framework based on flexbox, Bulma.
  
 ## Prerequisites
 Make sure you have installed all of the following prerequisites on your development machine:
