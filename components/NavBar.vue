@@ -18,15 +18,16 @@
             class="hover-link navbar-item" to="/"
             @click.native="toggleMenu = false"
           >Home</nuxt-link>
-          <div class="navbar-item has-dropdown is-hoverable">
+          <div v-click-outside="hide" class="navbar-item has-dropdown" :class="{'is-active': toggleDropdown}" @click="toggleDropdown = !toggleDropdown">
             <a class="hover-link navbar-link" style="color: #fff">
               Categories
             </a>
-            <div class="navbar-dropdown" style="border-top-width: 1px">
+            <div class="navbar-dropdown"
+                 style="border-top-width: 1px">
               <nuxt-link v-for="category in categories"
                  class="navbar-item"
                  :key="category"
-                  @click.native="toggleMenu = false"
+                  @click.stop.native="hideBothMenus"
                   :to="{ path: category }"
               >
                 {{getCategoryName(category)}}
@@ -41,6 +42,9 @@
 
 <script>
 
+import ClickOutside from 'vue-click-outside';
+
+
 export default {
   name: 'NavBar',
   props: ['categories'],
@@ -50,7 +54,17 @@ export default {
       toggleDropdown: false,
     };
   },
+  directives: {
+    ClickOutside,
+  },
   methods: {
+    hideBothMenus() {
+      this.toggleDropdown = false;
+      this.toggleMenu = false;
+    },
+    hide() {
+      this.toggleDropdown = false;
+    },
     getCategoryName(name) {
       return name.charAt(0).toUpperCase() + name.slice(1);
     },

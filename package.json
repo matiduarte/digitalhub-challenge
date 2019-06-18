@@ -19,6 +19,7 @@
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "nuxt": "^2.0.0",
+    "vue-click-outside": "^1.0.7",
     "vue-lazyload": "^1.2.6"
   },
   "devDependencies": {

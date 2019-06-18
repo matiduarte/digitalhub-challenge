@@ -2,6 +2,12 @@
 
 > Challenge for DigitalHub
 
+## Introduction
+
+> This is a single page application developed with Vue.Js and Nuxt. This application is configured with Airbnb's ESLint rules.
+ 
+
+
 ## Build Setup
 
 ``` bash
@@ -18,5 +24,3 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).

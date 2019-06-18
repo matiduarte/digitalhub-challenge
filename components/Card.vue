@@ -3,11 +3,13 @@
     <div class="column is-one-third" v-for="(headline, index) in news" :key="index">
    <div class="card">
     <div class="card-image">
+      <a :href="headline.url" target="_blank">
       <figure class="image is-3by2">
         <div v-lazy-container="{ selector: 'img', error: errorImg }">
           <img :data-src="headline.image" :data-error="errorImg" :alt="headline.title">
         </div>
       </figure>
+      </a>
     </div>
     <div class="card-content">
       <div class="media">
@@ -54,11 +56,13 @@ export default {
   }
   .card-content {
     padding: 10px 2px 2px 2px;
-    min-height: 126px;
-    max-height: 126px;
+    min-height: 135px;
+    max-height: 135px;
   }
   .columns{
     margin-top: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
     justify-content: center;
   }
   .columns > .column.is-one-third {

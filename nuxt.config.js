@@ -56,20 +56,12 @@ module.exports = {
         // To match cross-origin requests, use a RegExp that matches
         // the start of the origin:
         urlPattern: new RegExp('^http://localhost:3000/.*'),
+        cacheName: 'static-cache-v1',
         handler: 'cacheFirst',
         strategyOptions: {
           cacheableResponse: {
             statuses: [0, 200],
           },
-        },
-      },
-      {
-        urlPattern: new RegExp('^http://localhost:3000/img/.*'),
-        handler: 'cacheFirst',
-        method: 'GET',
-        strategyOptions: {
-          cacheName: 'images',
-          cacheableResponse: { statuses: [0, 200, 304] },
         },
       },
     ],

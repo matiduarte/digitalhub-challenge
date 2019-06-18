@@ -15,10 +15,6 @@ export default {
 </script>
 
 <style>
-  .loadingblur {
-    filter: blur(2px);
-    opacity: 0.8;
-  }
 
 .container {
   margin: 0 auto;

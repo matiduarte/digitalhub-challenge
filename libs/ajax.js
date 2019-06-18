@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const APIURL = 'https://newsapi.org/v2';
-const APIKEY = '5f4baeec6a344125b802d0ef72054584';
+const APIKEY = 'f8fccfc8319342388d75975eb132b28a';
 
 export default function request(method, path, data = {}) {
   const headers = {
